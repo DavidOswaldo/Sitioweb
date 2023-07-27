@@ -1,0 +1,25 @@
+{% include 'sitio/cabecera.html' %}
+
+<!-colocando Columas y filas->
+ 
+    <br>
+    <div class="row">
+        {% for libro in libros%}
+        <div class="col-3">
+<!-colocando card->
+            <div class="card">
+                <!--rutas y arreglo que se accesde de los registros de la base de datos-->
+                <img class="card-img-top" src="/imgs/{{libro[2]}}" alt="Title"> 
+                <div class="card-body">
+                    <h4 class="card-title">{{libro[1]}}</h4> 
+                    <p class="card-text">$20.00</p>
+
+                        <a name="" id="" class="btn btn-success" href="{{libro[3]}}" role="button">Descarga</a>
+                    </p>
+                
+                </div>
+            </div>
+        </div>
+         {% endfor %}
+                <!-colocando Columas y filas->
+        </div>        

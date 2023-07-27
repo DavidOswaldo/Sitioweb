@@ -1,0 +1,14 @@
+{% include 'admin/cabecera.html' %} <!- cabecera-->
+
+
+<div class="jumbotron">
+    <h1 class="display-3">BIEVENID@ <strong> {{session["usuario"]}}</strong> AL ADMINISTRADOR DEL SITIO WEB</h1>
+    <p class="lead">En esta seccion podras administrar los libros del sitio web</p>
+    <hr class="my-2">
+    
+    <p class="lead">
+        <a class="btn btn-primary btn-lg" href="/admin/libros" role="button">Admnistrar</a>
+    </p>
+</div>
+    
+{% include 'admin/pie.html' %}

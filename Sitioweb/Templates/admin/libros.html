@@ -1,0 +1,123 @@
+{% include 'admin/cabecera.html' %}
+
+<div class="container">
+  <div class="row">
+    <div class="col-5">
+      <br />
+      <!-se agrega card-->
+      <div class="card">
+        <div class="card-header">Datos del libro</div>
+        <div class="card-body">
+          <! se genra el formulario>
+          <form
+            action="/admin/libros/guardar"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <! enctype="multipart/form-data" funciona para recepcion de archivos>
+
+            <! se agrega un input del llbro>
+            <div class="form-group">
+              <label for="txtnombre">Nombre del libro</label>
+              <input
+                type="text"
+                class="form-control"
+                name="txtnombre"
+                id="txtnombre"
+                aria-describedby="helpId"
+                placeholder="Escribe el nombre del libro"
+              />
+            </div>
+            <br />
+            <! se agrega un input del llbrIMAGEN>
+            <div class="form-group">
+              <label for="">Imagen </label>
+              <input
+                type="file"
+                class="form-control"
+                name="txtimagen"
+                id="txtimagen"
+                aria-describedby="helpId"
+                placeholder="Seleccione la imagen a cargar"
+              />
+            </div>
+            <! se agrega un input del URL>
+            <br />
+            <div class="form-group">
+              <label for="txtURL">URL descarga</label>
+              <input
+                type="text"
+                class="form-control"
+                name="txtURL"
+                id=""
+                aria-describedby="helpId"
+                placeholder="Escriba la URL de descarga"
+              />
+            </div>
+
+            <br />
+            <button type="submit" class="btn btn-primary">Agregar</button>
+          </form>
+        </div>
+        <div class="card-footer text-muted">Footer</div>
+      </div>
+    </div>
+    <div class="col-7">
+      <br />
+
+      <! tabla de libros mostrados>
+      <div class="table-responsive">
+        <table class="table table-primary tablefa-border">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">NOMBRE</th>
+              <th scope="col">IMAGEN</th>
+              <th scope="col">URL</th>
+              <th scope="col">ACCIONES</th>
+            </tr>
+          </thead>
+          <body>
+            {%for libro in libros%}
+            <tr>
+              <td>{{libro [0]}}</td>
+              <td>{{libro [1]}}</td>
+              <td>
+                <img
+                  whith="80"
+                  src="/imgs/{{libro [2]}}"
+                  class="img-fluid rounded-top"
+                  alt=""
+                />
+              </td>
+
+              <td>
+                
+               <a name="" id="" class="btn btn-success" href="{{libro [3]}}" role="button">Link</a>
+              </td>
+
+              <td>
+                <!---boton eliminar registro-->
+                <form action="/admin/libros/borrar" method="post">
+                  <input
+                    value="{{libro [0]}}"
+                    type="hidden"
+                    class="form-control"
+                    name="txtID"
+                    id="txtID"
+                  />
+                  <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
+      <br />
+    </div>
+  </div>
+</div>
+
+{% include 'admin/pie.html' %}
